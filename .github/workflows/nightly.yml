@@ -1,0 +1,35 @@
+name: Nightly Test
+
+# Run the nightly tests at at 6 AM UTC
+on:
+  schedule:
+    - cron: "0 6 * * *"
+jobs:
+
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Build
+        uses: docker/build-push-action@v2
+        with:
+          platforms: linux/amd64,linux/arm64
+          push: false
+          load: false
+          tags: oittaa/firebase:latest
+
+  update:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update Firebase CLI version
+        run: ./update-version.sh
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.8.2
+        with:
+          delete-branch: true
+          title: 'Update Firebase CLI by create-pull-request action'
