@@ -1,3 +1,5 @@
+[![CI](https://github.com/oittaa/firebase-docker/actions/workflows/main.yml/badge.svg)](https://github.com/oittaa/firebase-docker/actions/workflows/main.yml)
+
 # firebase-docker
 
 ```
