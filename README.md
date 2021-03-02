@@ -4,10 +4,18 @@
 
 Unfortunately official `firebase-tools` Docker image doesn't exist at the moment. https://github.com/firebase/firebase-tools/issues/1644
 
-```
-docker run --rm oittaa/firebase --version
+This container uses `/firebase` as the `WORKDIR`.
 
+```bash
+docker run --rm oittaa/firebase --version
+```
+
+
+```bash
 docker run --rm \
     --volume="$(pwd):/firebase" \
-    oittaa/firebase deploy --token $FIREBASE_TOKEN --project $PROJECT_ID --only hosting
+    oittaa/firebase deploy \
+    --token $FIREBASE_TOKEN \
+    --project $PROJECT_ID \
+    --only hosting
 ```
