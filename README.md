@@ -2,6 +2,8 @@
 
 # firebase-docker
 
+Unfortunately official `firebase-tools` Docker image doesn't exist at the moment. https://github.com/firebase/firebase-tools/issues/1644
+
 ```
 docker run --rm oittaa/firebase --version
 
