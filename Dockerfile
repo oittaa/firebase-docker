@@ -1,5 +1,5 @@
 FROM node:lts-alpine3.19
-ARG VERSION=13.14.1
+ARG VERSION=13.14.2
 WORKDIR /firebase
 RUN npm install -g firebase-tools@${VERSION}
 ENTRYPOINT ["firebase"]
